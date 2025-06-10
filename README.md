@@ -99,7 +99,7 @@ Hint:
 
 En del forbedringer kan gjøres i psql først. 
 - Normalisering av tabeller
-- "Linking" tabell for genres/knownFor/primaryProfession (Associative entity) **Kan bli tidkrevende**. 
+- "Linking" tabell for genres/knownFor/primaryProfession (Associative entity) **Kan bli tidkrevende, så det holder med en av dem**. 
 - Primary keys
 - ForeignKeys/Constraints, men obs på at datasettet kan ha ugyldige verdier og mangler. Bare fjern eller ignorer om det skulle gi problemer. 
 
@@ -107,4 +107,48 @@ Bruk migreringsfiler i Go for å utvide systemet stegvis når du er klar. Tenk p
 
 
 
-### Datastruktur
+### Utvidelse
+
+Prøv å hold deg til migreringsfiler i videre arbeid, og tenkt på at data ikke skal gå tapt i migreringer til utvidet funksjonalitet. 
+
+Utvidelsen går ut på å legge til personer, venner, i systemet, slik at folk kan finne en god film å se på sammen, kommentere på filmer, rate osv. 
+
+Legg til de endepunktene du mener er nødvendig, men bonus om du har med update og delete. 
+
+#### Felles interesse
+
+Legg til tabeller: 
+- Personer, nok med kallenavn.
+- Favoritt sjangre, en tabell som knytter personer mot hvilke sjangre de ønsker å se
+- Egen tabell for sjangre om du ikke gjorde de i første del.
+
+Basert på dette, finn ut de sjangrene gruppen har til felles. 
+
+#### Updates vs. reads
+
+Lat som om vi har masse trafikk, og vi får ny data hver fredag kl. 04:00. 
+Altså, veldig få updates, men veldig mye lesing. 
+
+Hva kan vi gjøre for å spare ressurser generelt sett?
+
+Kan du lage en løsning som gir oss billig lesing av de høyest rangerte filmene gitt at en spesifikk skuespiller er med i filmen?
+
+#### SQL functions
+Kan du lage en funksjon i DB som tar inn en tittel og returnerer skuespillerene som er mest kjent for den tittelen?
+
+
+#### Filmkveld
+En "filmkveld" består av 1 film, og 1 eller flere personer. 
+Filmkvelden har støtte for at personer legger til en kommentar på filmen, og en rating. Dette er knyttet til filmkvelden, slik at det er mulig å rate samme film flere ganger på forskjellige filmkvelder. 
+Når noen rater filmen lavere enn 4 så legges filmen **automatisk** til i en ny tabell(bad_movies) sammen med kommentaren den fikk. 
+
+
+## Tips til Go
+
+Husk på: 
+- Trygg forbindelse mellom server og DB.
+- Håndtering av nullverdier
+- Feilhåndtering
+- Fornuftig logg
+- Gode structs
+
