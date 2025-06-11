@@ -91,7 +91,8 @@ Prøv å hold dette mest mulig på postgres siden av oppgaven.
 Hint: 
 - Bruk migreringsfiler i Go hvis du kan.
 - Logg enkelt når noe leses eller endres i title_basics tabellen. 
-- To kolonner holder. Change og timestamp. Change kan være "Read"/"Write". 
+- To kolonner holder. Change og timestamp. Change kan være "Insert", "Delete", "Update".
+- Du trenger ikke å støtte alle typer operasjoner. Det holder å demonstrere at du har kontroll på hvordan det kan gjøres. 
 
 ## Krevende oppgave
 
