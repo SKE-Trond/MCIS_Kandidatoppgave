@@ -15,7 +15,7 @@ Krevende oppgave:
 - Utvide funksjonalitet
 
 ## Besvarelse
-Lever hele besvarelsen som private repo i Github. Del oppgaven med @rmyhren, @salve og SKE-Trond. 
+Lever hele besvarelsen som private repo i Github. Del oppgaven med @rmyhren, @salve og @SKE-Trond. 
 
 Det er selvsagt tillatt å bruke LLM i besvarelsen, men vi leter etter forståelse av løsningen. 
 Derfor er det fint å bruke commits for å dele opp oppgaven slik at du viser løsningen stegvis. 
